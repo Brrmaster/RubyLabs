@@ -1,0 +1,9 @@
+<%= simple_form_for @restaurant, :html => { :multipart => true } do |f| %>
+ <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a Category") %>
+ <%-# options_for_select(@categories) "<option value="1">test</option>" -%>
+ <%= f.file_field :restaurant_img %>
+ <%= f.input :title, label: "Restaurant Name", input_html: {maxlength: 50} %>
+ <%= f.input :description, input_html: {maxlength: 1000} %>
+ <%= f.input :location, input_html: {maxlength: 50} %>
+ <%= f.button :submit, class: "btn-custom" %>
+<% end %>

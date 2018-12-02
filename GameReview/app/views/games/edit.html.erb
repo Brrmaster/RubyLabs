@@ -1,0 +1,26 @@
+<div class = "col-md-6 col-md-offset-3">
+
+	<div class = "new-game-form">
+
+		<h1>Edit Game</h1>
+
+		<% if @game.user_id == current_user.id %>
+
+			<%= simple_form_for @game, :html => { :multipart => true } do |f| %>
+				<%= f.file_field :game_img %>
+				<%= f.input :title, label: "Game Name", input_html: {maxlength: 50} %>
+				<%= f.input :genre, input_html: {maxlength: 50} %>
+				<%= f.input :developer, input_html: {maxlength: 50} %>
+				<%= f.input :description, input_html: {maxlength: 1000} %>
+				<%= f.button :submit, class: "btn-custom" %>
+			<% end %>
+
+		<% else %>
+
+		<p>You are unable to edit this page due to being the wrong user.</p>
+
+		<% end %>
+
+	</div>
+
+</div>

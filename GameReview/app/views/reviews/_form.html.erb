@@ -1,0 +1,14 @@
+<%= simple_form_for([@game, @game.reviews.build]) do |f| %>
+
+	<div id="rating-form">
+		<label>Rating</label>
+	</div>
+	<%= f.input :comment, input_html: {maxlength: 150} %>
+	<%= f.button :submit, class: "btn-custom" %>
+<% end %>
+<script>
+	$('#rating-form').raty({
+		path: '/assets/',
+		scoreName: 'review[rating]'
+	});
+</script>

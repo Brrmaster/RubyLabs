@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GameStripe</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "GameStripe", root_path, class: "navbar-brand" %>
+        </div>
+        <ul class="nav navbar-nav">
+
+          <% if user_signed_in? %>
+            <li> <%= link_to "Add Game", new_game_path %></li>
+          <% end %>
+
+        </ul>
+
+
+        <ul class="nav navbar-nav navbar-right">
+        	<li>
+	        	<%= form_tag(games_path, method: "get", id: "search-form") do %>
+	        		<%= text_field_tag :search, params[:search], placeholder: "Search Games", class: "search-bar" %>
+	        	<% end %>
+        	</li>
+          <% if user_signed_in? %>
+            <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to "Sign Up", new_user_registration_path %> </li>
+            <li> <%= link_to "Login In", new_user_session_path %>
+          <% end %>
+        </ul>
+
+      </div>
+    </nav>
+    <div class = "container">
+    	<p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+    
+      <%= yield %>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+<%= simple_form_for @game, :html => { :multipart => true } do |f| %>
+ <%= f.file_field :game_img %>
+ <%= f.input :title, label: "Game Name", input_html: {maxlength: 50} %>
+ <%= f.input :genre, input_html: {maxlength: 50} %>
+ <%= f.input :developer, input_html: {maxlength: 50} %>
+ <%= f.input :description, input_html: {maxlength: 1000} %>
+ <%= f.button :submit, class: "btn-custom" %>
+<% end %>

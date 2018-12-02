@@ -1,0 +1,20 @@
+	
+	<div class ="row">
+		<% if @games.present? %>
+
+			<% @games.each do |game| %>
+				<div class="col-lg-3 col-md-4 col-sm-6">
+					<a href="/games/<%= game.id %>"> 
+						<%= image_tag game.game_img.url(:game_index), class: "game" %>
+					</a>
+				</div>
+			<% end %>
+
+		<% else %>
+
+			<p>There are no games with the title, genre, or developer of <%= params[:search] %> </p>
+
+		<% end %>
+
+
+	</div>

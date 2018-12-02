@@ -1,0 +1,18 @@
+<div class="review">
+	<div class="review-rating" data-score="<%= review.rating %>"></div>
+	<p><%= review.comment %></p>
+
+	<div class="links btn-group">
+			<% if user_signed_in? %>
+
+				<% if @game.user_id == current_user.id %>
+
+					<%= link_to "Edit", edit_game_review_path(review.game, review), class: "btn btn-custom" %>
+					<%= link_to "Delete", game_review_path(review.game, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
+
+				<% end %>
+		
+			<% end %>
+		</div>
+
+</div>

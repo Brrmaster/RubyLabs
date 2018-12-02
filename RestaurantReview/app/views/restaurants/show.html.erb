@@ -1,0 +1,68 @@
+<div class="row">
+
+	<div class="col-md-4">
+		<%= image_tag @restaurant.restaurant_img.url(:restaurant_show), class: "restaurant-show" %>
+	</div>
+
+	<div class="col-md-8">
+		<div class = "restaurant-info">
+			<h2 class = "restaurant-title"><%= @restaurant.title %></h2>
+			<h3 class = "restaurant-location"><%= @restaurant.location %></h3>
+			<h4 class = "avg-rating">Average Rating:</h4>
+			<div class="average-review-rating" data-score=<%= @average_review %>></div>
+			<p class = "number-of-reviews">Based on <%= @restaurant.reviews.count %> reviews</p>
+			<h4 class = "restaurant-category">Category: <%= @restaurant.category.name %> </h4>
+			<p class = "restaurant-desc"><%= @restaurant.description %></p>
+
+			<div class = "links btn-group">
+				<% if user_signed_in? %>
+
+					<% if @restaurant.user_id == current_user.id %>
+
+						<%= link_to "Edit", edit_restaurant_path(@restaurant), class: "btn btn-custom" %>
+						<%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
+						
+
+					<% end %>
+		
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class = "row">
+
+	<div class="col-md-12">
+		<div class = "reviews"> 
+			<h3>User Reviews</h3>
+			
+			<%=  render @restaurant.reviews %>
+			<% if user_signed_in? %>
+				<%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn-custom" %>
+				<br>
+			<% end %>
+		</div>
+
+	</div>
+</div>
+
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
