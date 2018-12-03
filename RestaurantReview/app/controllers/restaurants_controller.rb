@@ -70,6 +70,7 @@ class RestaurantsController < ApplicationController
 		def check_user
 			find_restaurant
 			if @restaurant.user_id != current_user.id
+				flash[:notice] = "I know what you're trying to do Enke... I'm on to you!"
 				redirect_to restaurant_path(@restaurant)
 			end
 		end

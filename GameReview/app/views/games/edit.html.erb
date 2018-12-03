@@ -12,7 +12,8 @@
 				<%= f.input :genre, input_html: {maxlength: 50} %>
 				<%= f.input :developer, input_html: {maxlength: 50} %>
 				<%= f.input :description, input_html: {maxlength: 1000} %>
-				<%= f.button :submit, class: "btn-custom" %>
+				<%= f.button :submit, class: "btn btn-custom" %>
+				<%= link_to "Back", root_path, class: "btn btn-custom" %>
 			<% end %>
 
 		<% else %>

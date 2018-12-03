@@ -4,12 +4,13 @@
 
 		<h1> Edit Review </h1>
 
-		<%= simple_form_for([@game, @review]) do |f| %>
+		<%= simple_form_for([@restaurant, @review]) do |f| %>
 			<div id="rating-form">
 				<label>Rating</label>
 			</div>
 			<%= f.input :comment, input_html: {maxlength: 150} %>
-			<%= f.button :submit, class: "btn-custom" %>
+			<%= f.button :submit, class: "btn btn-custom" %>
+			<%= link_to "Back", root_path, class: "btn btn-custom" %>
 		<% end %>
 
 	</div>

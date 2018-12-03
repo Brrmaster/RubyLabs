@@ -34,19 +34,20 @@
             <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <% else %>
             <li><%= link_to "Sign Up", new_user_registration_path %> </li>
-            <li> <%= link_to "Login In", new_user_session_path %>
+            <li> <%= link_to "Login", new_user_session_path %> </li>
           <% end %>
         </ul>
 
       </div>
     </nav>
     <div class = "container">
-    	<p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <div class = "content">
+      	<h4 class="notice"><%= notice %></h4>
+        <h4 class="alert"><%= alert %></h4>
 
-    
-      <%= yield %>
-
+      
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

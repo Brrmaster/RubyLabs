@@ -10,7 +10,7 @@
 			<h3 class ="game-developer">Made by: <%= @game.developer %> &nbsp; Genre: <%= @game.genre %></h3>
 			<h4 class = "avg-rating">Average Rating </h4>
 			<div class="average-review-rating" data-score="<%= @average_review %>"></div>
-			<span class ="number-of-reviews">Based on <%= @game.reviews.count %> reviews</span> <br />
+			<span class ="number-of-reviews">Based on <%= @game.reviews.count %> review(s)</span> <br />
 			<p class = "game-desc"><%= @game.description %></p>
 
 			<div class="links btn-group">
@@ -24,6 +24,7 @@
 					<% end %>
 		
 				<% end %>
+						<%= link_to "Back", root_path, class: "btn btn-custom" %>
 			</div>
 		</div>
 	</div>
@@ -40,11 +41,12 @@
 	<div class="col-md-12">
 		<div class = "reviews"> 
 			<h3>User Reviews</h3>
-			
 			<%=  render @game.reviews %>
 			<% if user_signed_in? %>
 				<%= link_to "Add Review", new_game_review_path(@game), class: "btn-custom" %>
 				<br>
+			<% else %>
+				<h4><%= link_to "Login", new_user_session_path, class: "btn-custom" %> to add reviews!</h4>
 			<% end %>
 		</div>
 

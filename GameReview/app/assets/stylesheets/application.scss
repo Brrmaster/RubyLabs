@@ -41,6 +41,8 @@
 body {
 	background-color: #f5f5f5;
 	font-family: 'Lora', serif;
+	display: flex;
+	flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -256,6 +258,7 @@ p.alert, p.notice {
 	}
 
 }
+
 
 /* Signup/Login form styles */
 

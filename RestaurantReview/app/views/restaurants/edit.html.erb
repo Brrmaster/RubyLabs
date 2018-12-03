@@ -1,9 +1,11 @@
 <div class = "col-md-6 col-md-offset-3">
 
-	<div class = "new-game-form">
+	<div class = "new-restaurant-form">
 
 		<% if @restaurant.user_id == current_user.id %>
 			<h1>Edit Restaurant</h1>
+
+			
 
 			<%= simple_form_for @restaurant, :html => { :multipart => true } do |f| %>
 				<%= f.file_field :restaurant_img %>
@@ -11,7 +13,8 @@
 				<%= f.input :title, label: "Restaurant Name", input_html: {maxlength: 50} %>
 				<%= f.input :description, input_html: {maxlength: 1000} %>
 				<%= f.input :location, input_html: {maxlength: 50} %>
-				<%= f.button :submit, class: "btn-custom" %>
+				<%= f.button :submit, class: "btn btn-custom" %>
+				<%= link_to "Back", root_path, class: "btn btn-custom" %>
 			<% end %>
 		<% else %>
 			<p>Only the user who created the restaurant can edit this restaurant</p>

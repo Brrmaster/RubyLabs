@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 	before_action :find_game
 	before_action :find_review, only: [:edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new, :edit]
+	before_action :check_user, only: [:edit, :update, :destroy]
 
 	def new
 		@review = Review.new
@@ -49,5 +50,12 @@ class ReviewsController < ApplicationController
 
 		def find_review
 			@review = Review.find(params[:id])
+		end
+
+		def check_user
+			if @review.user_id != current_user.id
+				flash[:notice] = "I know what you're trying to do Enke... I'm on to you!"
+				redirect_to game_path(@game)
+			end
 		end
 end
